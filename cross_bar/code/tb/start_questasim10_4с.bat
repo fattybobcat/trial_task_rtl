@@ -1,0 +1,1 @@
+C:\questasim64_10.4c\win64\questasim.exe -do make.tcl
