@@ -1,0 +1,781 @@
+Analysis & Synthesis report for cross_bar
+Tue Jun 27 10:54:34 2017
+Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1
+ 13. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2
+ 14. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3
+ 15. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Jun 27 10:48:25 2017           ;
+; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
+; Revision Name                   ; cross_bar                                       ;
+; Top-level Entity Name           ; top_q                                           ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 6                                               ;
+; Total pins                      ; 298                                             ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC9E6F31I7     ;                    ;
+; Top-level entity name                                                           ; top_q              ; cross_bar          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Verilog Show LMF Mapping Messages                                               ; Off                ;                    ;
+; Verilog Version                                                                 ; SystemVerilog_2005 ; Verilog_2001       ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Synthesis Seed                                                                  ; 1                  ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                           ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                       ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
+; ../code/synt/top_q.sv            ; yes             ; User SystemVerilog HDL File  ; D:/my_project/cross_bar/code/synt/top_q.sv         ;         ;
+; ../code/synt/cross_bar.sv        ; yes             ; User SystemVerilog HDL File  ; D:/my_project/cross_bar/code/synt/cross_bar.sv     ;         ;
+; ../code/synt/round_robin_4.sv    ; yes             ; User SystemVerilog HDL File  ; D:/my_project/cross_bar/code/synt/round_robin_4.sv ;         ;
+; ../code/synt/interface.sv        ; yes             ; User SystemVerilog HDL File  ; D:/my_project/cross_bar/code/synt/interface.sv     ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                              ;
++---------------------------------------------+--------------------------------------------+
+; Resource                                    ; Usage                                      ;
++---------------------------------------------+--------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 73                                         ;
+;                                             ;                                            ;
+; Combinational ALUT usage for logic          ; 111                                        ;
+;     -- 7 input functions                    ; 0                                          ;
+;     -- 6 input functions                    ; 35                                         ;
+;     -- 5 input functions                    ; 53                                         ;
+;     -- 4 input functions                    ; 5                                          ;
+;     -- <=3 input functions                  ; 18                                         ;
+;                                             ;                                            ;
+; Dedicated logic registers                   ; 6                                          ;
+;                                             ;                                            ;
+; I/O pins                                    ; 298                                        ;
+;                                             ;                                            ;
+; Total DSP Blocks                            ; 0                                          ;
+;                                             ;                                            ;
+; Maximum fan-out node                        ; cross_bar:cross_bar_i1|number_master1_l[1] ;
+; Maximum fan-out                             ; 48                                         ;
+; Total fan-out                               ; 939                                        ;
+; Average fan-out                             ; 1.32                                       ;
++---------------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                            ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                          ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
+; |top_q                                 ; 111 (0)           ; 6 (0)        ; 0                 ; 0          ; 298  ; 0            ; |top_q                                                       ; work         ;
+;    |cross_bar:cross_bar_i1|            ; 111 (96)          ; 6 (3)        ; 0                 ; 0          ; 0    ; 0            ; |top_q|cross_bar:cross_bar_i1                                ; work         ;
+;       |round_robin_4:round_robin_4_i1| ; 15 (15)           ; 3 (3)        ; 0                 ; 0          ; 0    ; 0            ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1 ; work         ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                     ;
++--------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+; Register name                                                            ; Reason for Removal                                                          ;
++--------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[0]           ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[0]           ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[0]           ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|number_master2_l[0..2]                            ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|number_master3_l[0..2]                            ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|number_master4_l[0..2]                            ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[1..31]       ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[1..31]       ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[1..31]       ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[3..9,11..31] ; Merged with cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[10] ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[10]          ; Stuck at GND due to stuck port data_in                                      ;
+; Total Number of Removed Registers = 134                                  ;                                                                             ;
++--------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                       ;
++----------------------------------------------------------------+--------------------------------+-----------------------------------------------------------------+
+; Register name                                                  ; Reason for Removal             ; Registers Removed due to This Register                          ;
++----------------------------------------------------------------+--------------------------------+-----------------------------------------------------------------+
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|number_master4_l[2],                     ;
+;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[2], ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[1]  ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|number_master3_l[2],                     ;
+;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[2], ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[1]  ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|number_master2_l[2],                     ;
+;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[2], ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[1]  ;
++----------------------------------------------------------------+--------------------------------+-----------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 6     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|slave_master_ifc_1.master_slave_addr[10]        ;
+; 5:1                ; 14 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|slave_master_ifc_1.master_slave_wdata[8]        ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|number_master_en ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1 ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; SLAVE          ; 0     ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2 ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; SLAVE          ; 1     ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3 ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; SLAVE          ; 2     ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4 ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; SLAVE          ; 3     ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 6                           ;
+;     CLR               ; 6                           ;
+; arriav_lcell_comb     ; 112                         ;
+;     normal            ; 112                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 5                           ;
+;         5 data inputs ; 53                          ;
+;         6 data inputs ; 35                          ;
+; boundary_port         ; 298                         ;
+;                       ;                             ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 1.84                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
+    Info: Processing started: Tue Jun 27 10:48:13 2017
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cross_bar -c cross_bar
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /my_project/cross_bar/code/synt/top_q.sv
+    Info (12023): Found entity 1: top_q File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file /my_project/cross_bar/code/synt/cross_bar.sv
+    Info (12023): Found entity 1: cross_bar File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file /my_project/cross_bar/code/synt/round_robin_4.sv
+    Info (12023): Found entity 1: round_robin_4 File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file /my_project/cross_bar/code/synt/interface.sv
+    Info (12023): Found entity 1: m_s_ifc File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Info (12127): Elaborating entity "top_q" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at top_q.sv(126): truncated value with size 11 to match size of target (1) File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 126
+Info (12128): Elaborating entity "m_s_ifc" for hierarchy "m_s_ifc:master_ifc_1" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 88
+Info (12128): Elaborating entity "cross_bar" for hierarchy "cross_bar:cross_bar_i1" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 189
+Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(107): object "slave_1_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 107
+Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(108): object "slave_2_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 108
+Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(109): object "slave_3_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 109
+Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(110): object "slave_4_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 110
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 208
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 232
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 256
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 280
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_addr[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_wdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_2|m_s_ifc.master_slave_addr[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_wdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_3|m_s_ifc.master_slave_addr[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_wdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:master_ifc_4|m_s_ifc.master_slave_addr[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_1|m_s_ifc.slave_master_rdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_2|m_s_ifc.slave_master_rdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_3|m_s_ifc.slave_master_rdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[28]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[27]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[26]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[25]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[24]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[23]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[22]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[21]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[20]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[19]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[18]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[17]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[16]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[15]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[14]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "slave_2_req" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 41
+    Warning (13410): Pin "slave_2_addr[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[1]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[2]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[3]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[4]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[5]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[6]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[7]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[8]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_addr[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
+    Warning (13410): Pin "slave_2_cmd" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 43
+    Warning (13410): Pin "slave_2_wdata[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[1]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[2]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[3]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[4]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[5]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[6]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[7]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[8]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_2_wdata[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 44
+    Warning (13410): Pin "slave_3_req" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 66
+    Warning (13410): Pin "slave_3_addr[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[1]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[2]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[3]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[4]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[5]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[6]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[7]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[8]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_addr[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 67
+    Warning (13410): Pin "slave_3_cmd" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 68
+    Warning (13410): Pin "slave_3_wdata[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[1]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[2]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[3]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[4]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[5]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[6]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[7]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[8]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_3_wdata[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 69
+    Warning (13410): Pin "slave_4_req" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 74
+    Warning (13410): Pin "slave_4_addr[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[1]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[2]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[3]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[4]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[5]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[6]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[7]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[8]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_addr[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 75
+    Warning (13410): Pin "slave_4_cmd" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 76
+    Warning (13410): Pin "slave_4_wdata[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[1]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[2]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[3]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[4]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[5]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[6]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[7]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[8]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+    Warning (13410): Pin "slave_4_wdata[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 49 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "slave_2_ack" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 45
+    Warning (15610): No output dependent on input pin "slave_2_rdata[0]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[2]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[3]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[4]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[5]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[6]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[7]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[8]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_rdata[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
+    Warning (15610): No output dependent on input pin "slave_2_resp" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 47
+    Warning (15610): No output dependent on input pin "master_4_req[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[2]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[3]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[4]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[5]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[6]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[7]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[8]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "master_4_req[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
+    Warning (15610): No output dependent on input pin "slave_3_ack" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 70
+    Warning (15610): No output dependent on input pin "slave_3_rdata[0]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[2]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[3]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[4]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[5]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[6]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[7]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[8]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_rdata[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
+    Warning (15610): No output dependent on input pin "slave_3_resp" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 72
+    Warning (15610): No output dependent on input pin "slave_4_ack" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 78
+    Warning (15610): No output dependent on input pin "slave_4_rdata[0]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[2]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[3]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[4]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[5]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[6]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[7]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[8]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_rdata[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
+    Warning (15610): No output dependent on input pin "slave_4_resp" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 84
+Info (21057): Implemented 412 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 150 input pins
+    Info (21059): Implemented 148 output pins
+    Info (21061): Implemented 114 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 380 warnings
+    Info: Peak virtual memory: 863 megabytes
+    Info: Processing ended: Tue Jun 27 10:48:25 2017
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:21
+
+
