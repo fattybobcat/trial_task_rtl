@@ -55,8 +55,8 @@ module top_q
 	output	reg					master_3_resp,
 	
 	
-	input 		[10:0]			master_4_req,
-	input 						master_4_addr,
+	input 						master_4_req,
+	input 		[10:0]			master_4_addr,
 	input						master_4_cmd,
 	input		[10:0]			master_4_wdata,
 	output  reg					master_4_ack,
