@@ -77,7 +77,7 @@ alias s {
 	vsim -novopt    work.top_tb
 	log /* -r
 	do ./wave.do 
-	run 5000000
+	run 50000000
 	#1064000
 }
 

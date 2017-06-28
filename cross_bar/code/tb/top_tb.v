@@ -245,7 +245,7 @@ initial begin
 				end
 		end
 */
-	#5000
+	#250000
 	$stop();
 end
 
