@@ -359,7 +359,7 @@ always @(*)
 			begin
 				mask_en[3] = 1'b0;
 			end
-
+	
 		case (State)
 		
 		IDLE:		begin
