@@ -36,7 +36,10 @@ module master
 	
 	
 	reg		[7:0]		delay_cnt; // задержка 
-	int i;
+	int 				i;
+	int 				cnt_resp_ack;
+	int 				i_adr;
+	bit					start_1;
 	assign		master_ifc.master_slave_req = master_req;
 	assign		master_ifc.master_slave_addr = master_addr;
 	assign		master_ifc.master_slave_cmd = master_cmd;
@@ -49,7 +52,10 @@ module master
 		begin
 				$srandom(LOAD);
 				i=0;
+				cnt_resp_ack=0;
+				i_adr = 0;
 		end
+		
 always @( posedge clk or negedge reset_n )
 	begin
 		if ( !reset_n )
@@ -58,23 +64,33 @@ always @( posedge clk or negedge reset_n )
 				delay_cnt = 0;
 				master_addr = 0;
 				master_cmd = 0;
+				start_1=1;
 				master_wdata = 0;
 			end
 		else 
 			begin
-				if ( master_ack )
+				if (( master_ack && master_cmd && master_req ) || ( !master_cmd && master_resp && master_req )|| start_1)
 					begin
-						master_req = 0;
-					end
-				else if ( /*master_ack ||*/ !master_req )
-					begin
-						master_req = $urandom(LOAD+i)%2;//						$urandom_range(1, 0);
-						$display("\t @%0dns Master %d   random req = %d", $time, LOAD, $urandom(LOAD+i)%2);		
-						if ( master_req )
+			//			master_req = 0;
+						cnt_resp_ack++;
+						start_1=0;
+		//			end
+		//		else if ( /*master_ack ||*/ !master_req )
+		//			begin
+						if ( cnt_resp_ack == 16 )
 							begin
+								cnt_resp_ack = 0;
+								i_adr++;
+								if (i_adr >= 4 )
+									begin
+										i_adr = $urandom_range(3, 0);
+									end
+							end
+								master_req = 1;
 								master_addr [29:0] = $urandom_range(200, 0);
-								master_addr [31:30] = $urandom_range(3, 0);
+								master_addr [31:30] = i_adr;
 								master_cmd = $urandom_range(1, 0);
+								$display("\t @%0dns Master %d   random req = %d", $time, LOAD, $urandom(LOAD+i)%2);		
 								if ( master_cmd )
 									begin
 										master_wdata = $urandom_range(25000, 0);
@@ -83,10 +99,25 @@ always @( posedge clk or negedge reset_n )
 									begin
 										master_wdata = '0;
 									end
-							end
+						//		master_req = $urandom(LOAD+i)%2;//						$urandom_range(1, 0);
+						//		$display("\t @%0dns Master %d   random req = %d", $time, LOAD, $urandom(LOAD+i)%2);		
+						//		if ( master_req )
+						//			begin
+						//				master_addr [29:0] = $urandom_range(200, 0);
+						//				master_addr [31:30] = $urandom_range(3, 0);
+						//				master_cmd = $urandom_range(1, 0);
+						//				if ( master_cmd )
+						//					begin
+						//						master_wdata = $urandom_range(25000, 0);
+						//					end
+						//				else
+						//					begin
+						//						master_wdata = '0;
+						//					end
+						//			end
 						
-						i++;
-					end
+							i++;
+						end
 				if ( master_req == 0 )
 							begin
 								master_addr = 0;

@@ -70,7 +70,7 @@ always @( posedge clk or negedge reset_n)
 			end
 		else 
 			begin
-				if ( slave_req && !slave_ack)
+				if ( slave_req && !slave_ack && !slave_resp)
 					begin
 						addr <= slave_addr[31-NUMBER_SLAVE/2:0];
 						cmd	 <= slave_cmd;

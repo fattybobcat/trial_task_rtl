@@ -104,10 +104,14 @@ module cross_bar
 	logic   [2:0]		number_master2_l;
 	logic   [2:0]		number_master3_l;
 	logic   [2:0]		number_master4_l;
-	logic				slave_1_resp_l;
-	logic				slave_2_resp_l;
-	logic				slave_3_resp_l;
-	logic				slave_4_resp_l;
+
+	
+	logic				slave_1_rr_ack_resp;
+	logic				slave_2_rr_ack_resp;
+	logic				slave_3_rr_ack_resp;
+	logic				slave_4_rr_ack_resp;
+	
+	
 //-------------------------------------------------------------------------
 //-----------------назначение для первого мастера--------------------------	
 	assign	master_1_req	= master_slave_ifc_1.master_slave_req;
@@ -181,7 +185,8 @@ module cross_bar
 	assign	slave_master_ifc_4.master_slave_cmd 	= slave_4_cmd;
 	assign	slave_master_ifc_4.master_slave_wdata	= slave_4_wdata;
 	
-	
+
+assign	slave_1_rr_ack_resp = ( slave_1_ack && slave_1_cmd )? 1'b1: ( slave_1_resp && !slave_1_cmd )? 1'b1: 1'b0;	
 //-----------------------------------------------------------------------------
 //-----------------round_robin для 1-го slave-------------------------------------	
 	
@@ -201,7 +206,7 @@ module cross_bar
 		.master_2_addr(master_2_addr[31:30]),
 		.master_3_addr(master_3_addr[31:30]),
 		.master_4_addr(master_4_addr[31:30]),
-		.slave_ack(slave_1_ack),
+		.slave_ack(slave_1_rr_ack_resp),
 		
 		.number_master_en(number_master1),
 		.slave_req(slave_req_1)
@@ -341,10 +346,7 @@ always @( posedge clk or negedge reset_n )
 				number_master2_l <= 3'd0;
 				number_master3_l <= 3'd0;
 				number_master4_l <= 3'd0;
-				slave_1_resp_l <= 1'b0;
-				slave_2_resp_l <= 1'b0;
-				slave_3_resp_l <= 1'b0;
-				slave_4_resp_l <= 1'b0;
+
 			end
 		else
 			begin
@@ -352,10 +354,7 @@ always @( posedge clk or negedge reset_n )
 				number_master2_l <=	number_master2;
 				number_master3_l <=	number_master3;
 				number_master4_l <=	number_master4;
-				slave_1_resp_l <= slave_1_resp;
-				slave_2_resp_l <= slave_2_resp;
-				slave_3_resp_l <= slave_3_resp;
-				slave_4_resp_l <= slave_4_resp;
+
 			end
 	end
 								
