@@ -42,6 +42,6 @@ cross_bar.sv
     
 8)  отчеты:
     Quartus 15.1 для Cyclon V 5CGXFC9E6F31|7 
-    Fmax - 351 MHz
+    Fmax - 180 MHz
     
  
