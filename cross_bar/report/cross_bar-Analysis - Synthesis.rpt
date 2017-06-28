@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cross_bar
-Tue Jun 27 10:54:34 2017
+Wed Jun 28 16:21:16 2017
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -13,17 +13,18 @@ Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1
- 13. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2
- 14. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3
- 15. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1
+ 14. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2
+ 15. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3
+ 16. Parameter Settings for User Entity Instance: cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -50,13 +51,13 @@ agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Jun 27 10:48:25 2017           ;
+; Analysis & Synthesis Status     ; Successful - Wed Jun 28 16:17:18 2017           ;
 ; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
 ; Revision Name                   ; cross_bar                                       ;
 ; Top-level Entity Name           ; top_q                                           ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 6                                               ;
+; Total registers                 ; 18                                              ;
 ; Total pins                      ; 298                                             ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
@@ -188,31 +189,31 @@ agreement for further details.
 +----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                              ;
-+---------------------------------------------+--------------------------------------------+
-; Resource                                    ; Usage                                      ;
-+---------------------------------------------+--------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 73                                         ;
-;                                             ;                                            ;
-; Combinational ALUT usage for logic          ; 111                                        ;
-;     -- 7 input functions                    ; 0                                          ;
-;     -- 6 input functions                    ; 35                                         ;
-;     -- 5 input functions                    ; 53                                         ;
-;     -- 4 input functions                    ; 5                                          ;
-;     -- <=3 input functions                  ; 18                                         ;
-;                                             ;                                            ;
-; Dedicated logic registers                   ; 6                                          ;
-;                                             ;                                            ;
-; I/O pins                                    ; 298                                        ;
-;                                             ;                                            ;
-; Total DSP Blocks                            ; 0                                          ;
-;                                             ;                                            ;
-; Maximum fan-out node                        ; cross_bar:cross_bar_i1|number_master1_l[1] ;
-; Maximum fan-out                             ; 48                                         ;
-; Total fan-out                               ; 939                                        ;
-; Average fan-out                             ; 1.32                                       ;
-+---------------------------------------------+--------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                      ;
++---------------------------------------------+--------------------------------------------------------------------+
+; Resource                                    ; Usage                                                              ;
++---------------------------------------------+--------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 125                                                                ;
+;                                             ;                                                                    ;
+; Combinational ALUT usage for logic          ; 195                                                                ;
+;     -- 7 input functions                    ; 0                                                                  ;
+;     -- 6 input functions                    ; 54                                                                 ;
+;     -- 5 input functions                    ; 47                                                                 ;
+;     -- 4 input functions                    ; 26                                                                 ;
+;     -- <=3 input functions                  ; 68                                                                 ;
+;                                             ;                                                                    ;
+; Dedicated logic registers                   ; 18                                                                 ;
+;                                             ;                                                                    ;
+; I/O pins                                    ; 298                                                                ;
+;                                             ;                                                                    ;
+; Total DSP Blocks                            ; 0                                                                  ;
+;                                             ;                                                                    ;
+; Maximum fan-out node                        ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|Selector35~5 ;
+; Maximum fan-out                             ; 30                                                                 ;
+; Total fan-out                               ; 1250                                                               ;
+; Average fan-out                             ; 1.55                                                               ;
++---------------------------------------------+--------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -220,48 +221,80 @@ agreement for further details.
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                          ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
-; |top_q                                 ; 111 (0)           ; 6 (0)        ; 0                 ; 0          ; 298  ; 0            ; |top_q                                                       ; work         ;
-;    |cross_bar:cross_bar_i1|            ; 111 (96)          ; 6 (3)        ; 0                 ; 0          ; 0    ; 0            ; |top_q|cross_bar:cross_bar_i1                                ; work         ;
-;       |round_robin_4:round_robin_4_i1| ; 15 (15)           ; 3 (3)        ; 0                 ; 0          ; 0    ; 0            ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1 ; work         ;
+; |top_q                                 ; 195 (0)           ; 18 (0)       ; 0                 ; 0          ; 298  ; 0            ; |top_q                                                       ; work         ;
+;    |cross_bar:cross_bar_i1|            ; 195 (107)         ; 18 (3)       ; 0                 ; 0          ; 0    ; 0            ; |top_q|cross_bar:cross_bar_i1                                ; work         ;
+;       |round_robin_4:round_robin_4_i1| ; 88 (88)           ; 15 (15)      ; 0                 ; 0          ; 0    ; 0            ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1 ; work         ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                                     ;
-+--------------------------------------------------------------------------+-----------------------------------------------------------------------------+
-; Register name                                                            ; Reason for Removal                                                          ;
-+--------------------------------------------------------------------------+-----------------------------------------------------------------------------+
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[0]           ; Stuck at GND due to stuck port clock_enable                                 ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[0]           ; Stuck at GND due to stuck port clock_enable                                 ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[0]           ; Stuck at GND due to stuck port clock_enable                                 ;
-; cross_bar:cross_bar_i1|number_master2_l[0..2]                            ; Stuck at GND due to stuck port data_in                                      ;
-; cross_bar:cross_bar_i1|number_master3_l[0..2]                            ; Stuck at GND due to stuck port data_in                                      ;
-; cross_bar:cross_bar_i1|number_master4_l[0..2]                            ; Stuck at GND due to stuck port data_in                                      ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[1..31]       ; Stuck at GND due to stuck port clock_enable                                 ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[1..31]       ; Stuck at GND due to stuck port clock_enable                                 ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[1..31]       ; Stuck at GND due to stuck port clock_enable                                 ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[3..9,11..31] ; Merged with cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[10] ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[10]          ; Stuck at GND due to stuck port data_in                                      ;
-; Total Number of Removed Registers = 134                                  ;                                                                             ;
-+--------------------------------------------------------------------------+-----------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                                          ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------+
+; Latch Name                                                       ; Latch Enable Signal                                              ; Free of Timing Hazards ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------+
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[0] ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|Selector40 ; yes                    ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[1] ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|Selector38 ; yes                    ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[2] ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|Selector1  ; yes                    ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[3] ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|Selector42 ; yes                    ;
+; Number of user-specified and inferred latches = 4                ;                                                                  ;                        ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                       ;
-+----------------------------------------------------------------+--------------------------------+-----------------------------------------------------------------+
-; Register name                                                  ; Reason for Removal             ; Registers Removed due to This Register                          ;
-+----------------------------------------------------------------+--------------------------------+-----------------------------------------------------------------+
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|number_master4_l[2],                     ;
-;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[2], ;
-;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[1]  ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|number_master3_l[2],                     ;
-;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[2], ;
-;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[1]  ;
-; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|number_master2_l[2],                     ;
-;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[2], ;
-;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[1]  ;
-+----------------------------------------------------------------+--------------------------------+-----------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                         ;
++------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+; Register name                                                                ; Reason for Removal                                                          ;
++------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[0]               ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[0]               ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[0]               ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|number_master2_l[0..2]                                ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|number_master3_l[0..2]                                ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|number_master4_l[0..2]                                ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[1..31]           ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[1..31]           ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[1..31]           ; Stuck at GND due to stuck port clock_enable                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_3[0,1]  ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_3[0,1]  ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_3[0,1]  ; Stuck at GND due to stuck port data_in                                      ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_3[2]    ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_3[2]    ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_3[2]    ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_1[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_2[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_4[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_1[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_2[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_4[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_1[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_2[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_4[0..2] ; Lost fanout                                                                 ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[3..9,11..31]     ; Merged with cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[10] ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[10]              ; Stuck at GND due to stuck port data_in                                      ;
+; Total Number of Removed Registers = 170                                      ;                                                                             ;
++------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                  ;
++----------------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------+
+; Register name                                                  ; Reason for Removal             ; Registers Removed due to This Register                                     ;
++----------------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------+
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[2],            ;
+;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|State[1],            ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_3[1], ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4|cnt_nen_master_3[0]  ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[2],            ;
+;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|State[1],            ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_3[1], ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3|cnt_nen_master_3[0]  ;
+; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[0] ; Stuck at GND                   ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[2],            ;
+;                                                                ; due to stuck port clock_enable ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|State[1],            ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_3[1], ;
+;                                                                ;                                ; cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2|cnt_nen_master_3[0]  ;
++----------------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -269,25 +302,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 6     ;
+; Total registers                              ; 18    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Clear ; 18    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 3     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|slave_master_ifc_1.master_slave_addr[10]        ;
-; 5:1                ; 14 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|slave_master_ifc_1.master_slave_wdata[8]        ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|number_master_en ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|cnt_nen_master_4[2] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|cnt_nen_master_3[1] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|cnt_nen_master_2[0] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|cnt_nen_master_1[2] ;
+; 5:1                ; 24 bits   ; 72 LEs        ; 72 LEs               ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|slave_master_ifc_1.master_slave_wdata[3]           ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_q|cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|number_master_en    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------+
@@ -335,20 +371,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 6                           ;
-;     CLR               ; 6                           ;
-; arriav_lcell_comb     ; 112                         ;
-;     normal            ; 112                         ;
+; arriav_ff             ; 18                          ;
+;     CLR               ; 15                          ;
+;     ENA CLR           ; 3                           ;
+; arriav_lcell_comb     ; 196                         ;
+;     normal            ; 196                         ;
 ;         0 data inputs ; 1                           ;
-;         2 data inputs ; 2                           ;
-;         3 data inputs ; 16                          ;
-;         4 data inputs ; 5                           ;
-;         5 data inputs ; 53                          ;
-;         6 data inputs ; 35                          ;
+;         2 data inputs ; 48                          ;
+;         3 data inputs ; 20                          ;
+;         4 data inputs ; 26                          ;
+;         5 data inputs ; 47                          ;
+;         6 data inputs ; 54                          ;
 ; boundary_port         ; 298                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 1.84                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.93                        ;
 +-----------------------+-----------------------------+
 
 
@@ -357,7 +394,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -367,7 +404,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Tue Jun 27 10:48:13 2017
+    Info: Processing started: Wed Jun 28 16:17:06 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cross_bar -c cross_bar
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file /my_project/cross_bar/code/synt/top_q.sv
@@ -379,17 +416,32 @@ Info (12021): Found 1 design units, including 1 entities, in source file /my_pro
 Info (12021): Found 1 design units, including 1 entities, in source file /my_project/cross_bar/code/synt/interface.sv
     Info (12023): Found entity 1: m_s_ifc File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
 Info (12127): Elaborating entity "top_q" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at top_q.sv(126): truncated value with size 11 to match size of target (1) File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 126
 Info (12128): Elaborating entity "m_s_ifc" for hierarchy "m_s_ifc:master_ifc_1" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 88
 Info (12128): Elaborating entity "cross_bar" for hierarchy "cross_bar:cross_bar_i1" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 189
-Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(107): object "slave_1_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 107
-Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(108): object "slave_2_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 108
-Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(109): object "slave_3_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 109
-Warning (10036): Verilog HDL or VHDL warning at cross_bar.sv(110): object "slave_4_resp_l" assigned a value but never read File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 110
-Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 208
-Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 232
-Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 256
-Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 280
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 213
+Warning (10240): Verilog HDL Always Construct warning at round_robin_4.sv(342): inferring latch(es) for variable "mask_en", which holds its previous value in one or more paths through the always construct File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[0]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[1]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[2]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[3]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i2" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 237
+Warning (10240): Verilog HDL Always Construct warning at round_robin_4.sv(342): inferring latch(es) for variable "mask_en", which holds its previous value in one or more paths through the always construct File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[0]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[1]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[2]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[3]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i3" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 261
+Warning (10240): Verilog HDL Always Construct warning at round_robin_4.sv(342): inferring latch(es) for variable "mask_en", which holds its previous value in one or more paths through the always construct File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[0]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[1]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[2]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[3]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (12128): Elaborating entity "round_robin_4" for hierarchy "cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i4" File: D:/my_project/cross_bar/code/synt/cross_bar.sv Line: 285
+Warning (10240): Verilog HDL Always Construct warning at round_robin_4.sv(342): inferring latch(es) for variable "mask_en", which holds its previous value in one or more paths through the always construct File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[0]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[1]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[2]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+Info (10041): Inferred latch for "mask_en[3]" at round_robin_4.sv(342) File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
 Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[31]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
 Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[30]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
 Warning (12161): Node "m_s_ifc:master_ifc_1|m_s_ifc.master_slave_wdata[29]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
@@ -642,6 +694,14 @@ Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[14]" is st
 Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[13]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
 Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[12]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
 Warning (12161): Node "m_s_ifc:slave_ifc_4|m_s_ifc.slave_master_rdata[11]" is stuck at GND because node is in wire loop and does not have a source File: D:/my_project/cross_bar/code/synt/interface.sv Line: 2
+Warning (13012): Latch cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[0] has unsafe behavior File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[2] File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 72
+Warning (13012): Latch cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[1] has unsafe behavior File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[2] File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 72
+Warning (13012): Latch cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[2] has unsafe behavior File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[2] File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 72
+Warning (13012): Latch cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|mask_en[3] has unsafe behavior File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 342
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal cross_bar:cross_bar_i1|round_robin_4:round_robin_4_i1|State[2] File: D:/my_project/cross_bar/code/synt/round_robin_4.sv Line: 72
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "slave_2_req" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 41
     Warning (13410): Pin "slave_2_addr[0]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 42
@@ -716,9 +776,10 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "slave_4_wdata[9]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
     Warning (13410): Pin "slave_4_wdata[10]" is stuck at GND File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 77
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 30 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 49 input pin(s) that do not drive logic
+Warning (21074): Design contains 39 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "slave_2_ack" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 45
     Warning (15610): No output dependent on input pin "slave_2_rdata[0]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
     Warning (15610): No output dependent on input pin "slave_2_rdata[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
@@ -732,16 +793,6 @@ Warning (21074): Design contains 49 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "slave_2_rdata[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
     Warning (15610): No output dependent on input pin "slave_2_rdata[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 46
     Warning (15610): No output dependent on input pin "slave_2_resp" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 47
-    Warning (15610): No output dependent on input pin "master_4_req[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[2]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[3]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[4]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[5]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[6]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[7]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[8]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
-    Warning (15610): No output dependent on input pin "master_4_req[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 58
     Warning (15610): No output dependent on input pin "slave_3_ack" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 70
     Warning (15610): No output dependent on input pin "slave_3_rdata[0]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
     Warning (15610): No output dependent on input pin "slave_3_rdata[1]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 71
@@ -768,14 +819,14 @@ Warning (21074): Design contains 49 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "slave_4_rdata[9]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
     Warning (15610): No output dependent on input pin "slave_4_rdata[10]" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 79
     Warning (15610): No output dependent on input pin "slave_4_resp" File: D:/my_project/cross_bar/code/synt/top_q.sv Line: 84
-Info (21057): Implemented 412 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 496 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 150 input pins
     Info (21059): Implemented 148 output pins
-    Info (21061): Implemented 114 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 380 warnings
-    Info: Peak virtual memory: 863 megabytes
-    Info: Processing ended: Tue Jun 27 10:48:25 2017
+    Info (21061): Implemented 198 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 377 warnings
+    Info: Peak virtual memory: 859 megabytes
+    Info: Processing ended: Wed Jun 28 16:17:18 2017
     Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Total CPU time (on all processors): 00:00:22
 
 
